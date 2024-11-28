@@ -23,7 +23,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
-    <link rel="manifest" href="static/site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
 
     <style>
         img {
@@ -38,6 +38,26 @@
         body {
             background-color: #f3ecda;
             color: #2b4a44;
+        }
+
+        .card {
+            border-radius: 1rem;
+            border-width: 0px;
+        }
+
+        .card-body {
+            background-color: #2b4a44;
+            color: #f3ecda;
+            border-radius: 1rem;
+        }
+
+        .card-body .btn-outline-primary {
+            color: #f3ecda;
+            border-color: #f3ecda;
+        }
+
+        .card-body .btn-outline-primary:hover {
+            background-color: #f3ecdab0;
         }
     </style>
 </head>
@@ -110,6 +130,20 @@
                         logo!
                     </p>
                 </div>
+            </div>
+        </div>
+
+        <div class="card text-center mb-3">
+            <div class="card-body">
+                <h5 class="card-title mt-3">Stay Connected!</h5>
+                <p class="card-text mb-3">Keep up with the latest news, heartwarming animal stories, and updates from
+                    our
+                    foundation.</p>
+                <a class="btn btn-outline-primary mb-3" href="https://www.facebook.com/profile.php?id=61558511665949">
+                    Visit Our
+                    Facebook Page
+                    <!-- <i class="bi bi-arrow-right mb-2"></i> -->
+                </a>
             </div>
         </div>
 
