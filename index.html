@@ -196,7 +196,7 @@
 
         /* ── Content Sections ─────────────────────────── */
         .content-section {
-            padding: 3.5rem 0 0;
+            padding: 2rem 0 0;
         }
 
         /* ── Needs Cards ──────────────────────────────── */
@@ -247,11 +247,12 @@
         }
 
         .fun-fact img {
+            height: 150px;
+            width: auto;
+            max-width: 100%;
             border-radius: 1rem;
             object-fit: contain;
-            max-width: 150px;
-            width: 100%;
-            height: auto;
+            display: block;
         }
 
         .fun-fact .badge-label {
@@ -287,8 +288,8 @@
             color: #3d5e56;
         }
 
-        /* ── CTA Card ─────────────────────────────────── */
-        .cta-card {
+        /* ── Volunteer Note ───────────────────────────── */
+        .volunteer-note {
             background: linear-gradient(135deg, #2b4a44 0%, #3a635b 100%);
             border-radius: 1.25rem;
             padding: 3rem 2rem;
@@ -297,13 +298,58 @@
             box-shadow: 0 8px 30px rgba(43, 74, 68, .18);
         }
 
+        .volunteer-note h2 {
+            color: #f3ecda;
+            margin-bottom: .75rem;
+        }
+
+        .volunteer-note p {
+            color: #bdd4cc;
+            font-size: 1.05rem;
+            max-width: 480px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .btn-volunteer {
+            background: #f3ecda;
+            color: #2b4a44;
+            border: none;
+            padding: .7rem 2rem;
+            border-radius: .65rem;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background .25s ease, transform .25s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-volunteer:hover {
+            background: #fff;
+            color: #2b4a44;
+            transform: translateY(-2px);
+        }
+
+        .btn-volunteer i {
+            margin-right: .4rem;
+        }
+
+        /* ── CTA Card ─────────────────────────────────── */
+        .cta-card {
+            background: linear-gradient(135deg, #5a8a7a 0%, #7aaa9a 100%);
+            border-radius: 1.25rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #f3ecda;
+            box-shadow: 0 8px 30px rgba(90, 138, 122, .18);
+        }
+
         .cta-card h2 {
             color: #f3ecda;
             margin-bottom: .75rem;
         }
 
         .cta-card p {
-            color: #bdd4cc;
+            color: #dceee8;
             font-size: 1.05rem;
             max-width: 480px;
             margin: 0 auto 1.5rem;
@@ -329,6 +375,51 @@
         }
 
         .btn-cta i {
+            margin-right: .4rem;
+        }
+
+        /* ── Donate CTA Card ──────────────────────────── */
+        .donate-card {
+            background: linear-gradient(135deg, #1e3630 0%, #2b4a44 100%);
+            border-radius: 1.25rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #f3ecda;
+            box-shadow: 0 8px 30px rgba(43, 74, 68, .22);
+        }
+
+        .donate-card h2 {
+            color: #f3ecda;
+            margin-bottom: .75rem;
+        }
+
+        .donate-card p {
+            color: #bdd4cc;
+            font-size: 1.05rem;
+            max-width: 480px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .btn-donate {
+            background: #f3ecda;
+            color: #2b4a44;
+            border: none;
+            padding: .7rem 2rem;
+            border-radius: .65rem;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background .25s ease, transform .25s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-donate:hover {
+            background: #fff;
+            color: #2b4a44;
+            transform: translateY(-2px);
+        }
+
+        .btn-donate i {
             margin-right: .4rem;
         }
 
@@ -540,6 +631,23 @@
                     strategic oversight, governance, and stewardship of resources. Together, we remain focused on
                     protecting,
                     rescuing, and advocating for equines in need.</p>
+
+                <!-- ── Fun Fact ──────────────────────────────── -->
+                <div class="fun-fact reveal my-4">
+                    <div class="row align-items-center g-3">
+                        <div class="col-12 col-sm-auto text-center">
+                            <img src="static/chammy-angela.jpg" alt="Chammy and Angela">
+                        </div>
+                        <div class="col-12 col-sm">
+                            <span class="badge-label"><i class="bi bi-lightbulb me-1"></i>Did you know?</span>
+                            <p class="mb-0">Chammy holds a special place in Angela's heart as her first horse, igniting
+                                her
+                                lifelong dedication to caring for neglected equestrian animals. Chammy's blankets were
+                                also
+                                green, just like our logo!</p>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- ── Our Needs ─────────────────────────────── -->
@@ -613,22 +721,25 @@
                     world—one where all equines are treated with dignity, kindness, and respect.</p>
             </section>
 
-            <!-- ── Fun Fact ──────────────────────────────── -->
-            <div class="fun-fact reveal my-4">
-                <div class="row align-items-center g-3">
-                    <div class="col-12 col-sm-auto text-center">
-                        <img src="static/chammy-angela.jpg" alt="Chammy and Angela">
-                    </div>
-                    <div class="col-12 col-sm">
-                        <span class="badge-label"><i class="bi bi-lightbulb me-1"></i>Did you know?</span>
-                        <p class="mb-0">Chammy holds a special place in Angela's heart as her first horse, igniting her
-                            lifelong dedication to caring for neglected equestrian animals. Chammy's blankets were also
-                            green, just like our logo!</p>
-                    </div>
-                </div>
+            <!-- ── Donate CTA Card ───────────────────────── -->
+            <div class="donate-card reveal my-5">
+                <h2>Donate Now</h2>
+                <p>Support our mission to rescue, rehabilitate, and care for neglected equestrian animals.</p>
+                <a class="btn-donate" href="/give">
+                    <i class="bi bi-heart-fill"></i> Support Our Mission
+                </a>
             </div>
 
-            <!-- ── CTA Card ──────────────────────────────── -->
+            <!-- ── Volunteer Note ──────────────────────────── -->
+            <div class="volunteer-note reveal my-5">
+                <h2>Lend a Hand</h2>
+                <p>In the Guthrie area? Love large animals and working hard? We'd love to hear from you!</p>
+                <a class="btn-volunteer" href="mailto:volunteer@chammys.org">
+                    <i class="bi bi-envelope"></i> volunteer@chammys.org
+                </a>
+            </div>
+
+            <!-- ── Stay Connected CTA Card ──────────────────────────────── -->
             <div class="cta-card reveal my-5">
                 <h2>Stay Connected</h2>
                 <p>Keep up with the latest news, heartwarming animal stories, and updates from our foundation.</p>
@@ -636,6 +747,7 @@
                     <i class="bi bi-facebook"></i> Visit Our Facebook Page
                 </a>
             </div>
+
 
             <!-- ── Footer ────────────────────────────────── -->
             <footer class="reveal">
