@@ -18,6 +18,8 @@
     <meta name="msapplication-TileColor" content="#2b4a44">
     <meta name="theme-color" content="#f3ecda">
     <meta property="og:title" content="Chammy's Equine Sanctuary" />
+    <meta property="og:description"
+        content="A 501(c)(3) organization dedicated to improving the welfare of neglected equestrian animals in Guthrie, Oklahoma." />
     <meta property="og:image" content="static/og-image.png" />
     <link rel="manifest" href="static/site.webmanifest" />
 
@@ -29,7 +31,14 @@
     <link rel="icon" type="image/x-icon" href="static/favicon.ico">
     <link rel="shortcut icon" href="static/favicon.ico" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
     <style>
+        /* ── Reset & Base ─────────────────────────────── */
         img {
             user-select: none;
             -moz-user-select: none;
@@ -39,152 +48,635 @@
             pointer-events: none;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: #f3ecda;
             color: #2b4a44;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        .card {
+        /* ── Typography ───────────────────────────────── */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.25rem;
+            font-size: 2rem;
+        }
+
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #5a8a7a;
+            border-radius: 2px;
+            margin-top: .45rem;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: #3d5e56;
+        }
+
+        /* ── Hero ──────────────────────────────────────── */
+        .hero {
+            text-align: center;
+            padding: 5rem 1rem 2rem;
+        }
+
+        .hero img.logo {
+            width: 220px;
+            margin-bottom: 1.5rem;
+            animation: fadeSlideDown .8s ease-out;
+        }
+
+        .hero .tagline {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: #4a6e64;
+            animation: fadeSlideDown 1s ease-out .15s both;
+        }
+
+        @keyframes fadeSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── Banner Image ─────────────────────────────── */
+        .banner-wrap {
+            position: relative;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(43, 74, 68, .12);
+        }
+
+        .banner-wrap::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 25%;
+            background: linear-gradient(to top, rgba(43, 74, 68, .65) 0%, rgba(43, 74, 68, .25) 40%, transparent 100%);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            pointer-events: none;
+            z-index: 1;
+            mask-image: linear-gradient(to top, black 0%, black 30%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to top, black 0%, black 30%, transparent 100%);
+        }
+
+        .banner-wrap img {
+            width: 100%;
+            display: block;
+            transition: transform .6s ease;
+        }
+
+        .banner-wrap:hover img {
+            transform: scale(1.02);
+        }
+
+        /* ── Stats Strip ──────────────────────────────── */
+        .stats-strip {
+            background: #2b4a44;
             border-radius: 1rem;
-            border-width: 0px;
+            padding: 1.75rem 1rem;
+            margin-top: -3.5rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 40px rgba(43, 74, 68, .30);
         }
 
-        .card-body {
-            background-color: #2b4a44;
+        .stat-item {
+            text-align: center;
+            padding: .5rem;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 700;
             color: #f3ecda;
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            font-size: .82rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: #a8c5bb;
+            margin-top: .15rem;
+        }
+
+        /* ── Content Sections ─────────────────────────── */
+        .content-section {
+            padding: 2rem 0 2rem;
+        }
+
+        /* ── Needs Cards ──────────────────────────────── */
+        .need-card {
+            background: #fff;
             border-radius: 1rem;
+            padding: 1.75rem;
+            height: 100%;
+            border: 1px solid rgba(43, 74, 68, .08);
+            transition: transform .3s ease, box-shadow .3s ease;
         }
 
-        .card-body .btn-outline-primary {
+        .need-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(43, 74, 68, .10);
+        }
+
+        .need-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(43, 74, 68, .08);
+            border-radius: .75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            color: #2b4a44;
+        }
+
+        .need-card h5 {
+            font-size: 1.1rem;
+            margin-bottom: .5rem;
+        }
+
+        .need-card p {
+            font-size: .95rem;
+            margin-bottom: 0;
+        }
+
+        /* ── Fun Fact Callout ─────────────────────────── */
+        .fun-fact {
+            background: #fff;
+            border-radius: 1.25rem;
+            padding: 2rem;
+            border-left: 4px solid #5a8a7a;
+            box-shadow: 0 4px 16px rgba(43, 74, 68, .06);
+        }
+
+        .fun-fact img {
+            border-radius: 1rem;
+            object-fit: contain;
+            max-width: 150px;
+            width: 100%;
+            height: auto;
+        }
+
+        .fun-fact .badge-label {
+            display: inline-block;
+            background: rgba(43, 74, 68, .08);
+            color: #2b4a44;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            padding: .3rem .7rem;
+            border-radius: .4rem;
+            margin-bottom: .65rem;
+        }
+
+        /* ── Tax-Deductible Note ──────────────────────── */
+        .tax-note {
+            background: rgba(43, 74, 68, .06);
+            border: 1px dashed rgba(43, 74, 68, .2);
+            border-radius: 1rem;
+            padding: 1.25rem 1.75rem;
+        }
+
+        .tax-note i {
+            font-size: 1.4rem;
+            color: #5a8a7a;
+            display: block;
+            margin-bottom: .5rem;
+        }
+
+        .tax-note p {
+            font-size: .95rem;
+            color: #3d5e56;
+        }
+
+        /* ── CTA Card ─────────────────────────────────── */
+        .cta-card {
+            background: linear-gradient(135deg, #2b4a44 0%, #3a635b 100%);
+            border-radius: 1.25rem;
+            padding: 3rem 2rem;
+            text-align: center;
             color: #f3ecda;
-            border-color: #f3ecda;
+            box-shadow: 0 8px 30px rgba(43, 74, 68, .18);
         }
 
-        .card-body .btn-outline-primary:hover {
-            background-color: #f3ecdab0;
+        .cta-card h2 {
+            color: #f3ecda;
+            margin-bottom: .75rem;
+        }
+
+        .cta-card p {
+            color: #bdd4cc;
+            font-size: 1.05rem;
+            max-width: 480px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .btn-cta {
+            background: #f3ecda;
+            color: #2b4a44;
+            border: none;
+            padding: .7rem 2rem;
+            border-radius: .65rem;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background .25s ease, transform .25s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-cta:hover {
+            background: #fff;
+            color: #2b4a44;
+            transform: translateY(-2px);
+        }
+
+        .btn-cta i {
+            margin-right: .4rem;
+        }
+
+        /* ── Footer ────────────────────────────────────── */
+        footer {
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        footer img {
+            width: 44px;
+            opacity: .85;
+            margin-bottom: .75rem;
+        }
+
+        footer h6 {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: .25rem;
+        }
+
+        footer .meta {
+            font-size: .85rem;
+            color: #6b8e85;
+            font-weight: 400;
+        }
+
+        footer .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(43, 74, 68, .07);
+            color: #2b4a44;
+            font-size: 1.1rem;
+            transition: background .25s ease, transform .25s ease;
+            text-decoration: none;
+        }
+
+        footer .social-link:hover {
+            background: #2b4a44;
+            color: #f3ecda;
+            transform: translateY(-2px);
+        }
+
+        /* ── Splash Screen ─────────────────────────────── */
+        .splash {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: #f3ecda;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity .6s ease, visibility .6s ease;
+        }
+
+        .splash.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .splash img {
+            width: 90px;
+            animation: splashPulse 1.6s ease-in-out infinite;
+        }
+
+        @keyframes splashPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: .85;
+            }
+
+            50% {
+                transform: scale(1.06);
+                opacity: 1;
+            }
+        }
+
+        /* hide page content until splash clears */
+        .page-content {
+            opacity: 0;
+            transition: opacity .5s ease;
+        }
+
+        .page-content.show {
+            opacity: 1;
+        }
+
+        /* ── Scroll Reveal ─────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Responsive ────────────────────────────────── */
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3rem 1rem 1.5rem;
+            }
+
+            .hero img.logo {
+                width: 170px;
+            }
+
+            .section-heading {
+                font-size: 1.65rem;
+            }
+
+            .stats-strip {
+                margin-top: -1rem;
+                padding: 1.25rem .5rem;
+            }
+
+            .stat-number {
+                font-size: 1.75rem;
+            }
+
+            .cta-card {
+                padding: 2rem 1.25rem;
+            }
+
+            .fun-fact {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 
-<body class="m-3">
-    <div class="container-fluid col-md-10 col-lg-7 col-sm-10 mt-5">
-        <div class="text-center mt-5 mb-5">
-            <img src="static/logo-full-green.png" width="250px" class="mb-4">
-            <p class="fw-lighter">A mission-driven 501(c)(3) organization dedicated to improving the welfare of
-                neglected equestrian animals in Guthrie, Oklahoma.
-            </p>
-        </div>
-
-        <div class="row justify-content-center align-items-center">
-            <div class="col-12">
-                <img src="static/banner.jpeg" class="rounded float-start rounded-4 mb-3" width="100%">
-            </div>
-        </div>
-
-        <h1>Our Story</h1>
-        <p>Chammy's Equine Sanctuary is a haven for 13 horses, 9 mini horses, 5 small ponies, 3 large ponies, and 6
-            donkeys. Since 2015, Angela, our President and sole staff member, has dedicated herself to voluntarily
-            caring for these
-            animals—and countless others. During this time, she has created a refuge for neglected equines, participated
-            in natural
-            disaster rescues, and educated the community about responsible equine ownership.
-        </p>
-        <p>
-            In 2024, <b>Chammy's Equine Sanctuary Foundation</b> was established to support Angela's efforts and
-            sustain her mission of
-            rescuing and caring for neglected animals. A dedicated board of directors was formed to provide guidance,
-            strategic
-            oversight, and ensure the foundation's long-term health and integrity. Their leadership ensures that every
-            resource is
-            managed responsibly, aligning with our mission to protect and advocate for equines in need.
-        </p>
-
-        <h1>Our Needs</h1>
-        <p>100% of all donations to the general fund will be used to take care of our animals and further our mission.
-            This includes covering essential monthly expenses such as grain, hay, and medical care, ensuring our
-            equestrian
-            residents receive consistent nutrition and attention.
-        </p>
-        <p>While our immediate priority is meeting the daily needs of our animals, we do have future goals we'd love
-            to share:</p>
-        <ul>
-            <li><b>Sanctuary Repairs and Upkeep:</b> Invest in repairing and maintaining our current barn, ensuring it
-                remains a safe,
-                functional, and comfortable home for our animals.
-            <li><b>Emergency Preparedness:</b> Acquire a stock-type trailer capable of safely transporting multiple
-                animals during emergencies
-                like wildfires or natural disasters, protecting the well-being of all under our care.</li>
-            <li><b>Expanding Our Sanctuary:</b> Purchase additional land to increase pasture space, providing more
-                grazing areas and shelter
-                for our growing equestrian family.</li>
-        </ul>
-        <p>Your generosity helps us care for our animals today and build a brighter future for them tomorrow.</p>
-
-        <h1>Our Vision</h1>
-        <p>Our vision is centered on the fundamental belief that every equestrian animal deserves to live a life free
-            from neglect and suffering. We envision a future where neglected horses, ponies, and other equines are
-            provided with comprehensive care programs tailored to their specific needs. Through our efforts, these
-            animals will not only be rescued from dire situations but also rehabilitated physically, emotionally, and
-            psychologically, enabling them to thrive in loving and supportive environments.</p>
-        <p>Furthermore, we aspire to cultivate a culture of responsible ownership within the equestrian community and
-            beyond. Through educational initiatives, we seek to raise awareness about the proper care and treatment of
-            equines, emphasizing the importance of empathy, understanding, and commitment. By empowering individuals
-            with knowledge and resources, we aim to prevent neglect and abuse before they occur, ultimately creating
-            healthier and happier lives for equestrian animals worldwide.</p>
-        <p>In pursuit of our vision, we are dedicated to collaborating with like-minded organizations, advocates, and
-            volunteers who share our passion for animal welfare. Together, we will work tirelessly to transform the
-            lives of neglected equestrian animals and inspire positive change within society, fostering a future where
-            compassion, kindness, and respect extend to all living beings.</p>
-
-
-        <div class="container my-5">
-            <div class="row align-items-center">
-                <div class="col-12 col-sm-auto mb-3 mb-sm-0 text-center">
-                    <img src="static/chammy-angela.jpg" class="rounded float-start rounded-3" width="150px">
-                </div>
-                <div class="col-12 col-sm d-flex justify-content-center text-md-start">
-                    <i class="bi bi-lightbulb flex-shrink-0 me-2"></i>
-                    <p>
-                        <b>Did you know?</b> Chammy holds a special place in Angela's heart as her first horse, igniting
-                        her
-                        lifelong dedication to caring for neglected equestrian animals. Chammy's blankets were also
-                        green, just
-                        like our logo!
-                    </p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card text-center mb-3">
-            <div class="card-body">
-                <h5 class="card-title mt-3">Stay Connected!</h5>
-                <p class="card-text mb-3">Keep up with the latest news, heartwarming animal stories, and updates from
-                    our
-                    foundation.</p>
-                <a class="btn btn-outline-primary mb-3" href="https://www.facebook.com/profile.php?id=61558511665949"
-                    target="_blank">
-                    Visit Our
-                    Facebook Page
-                </a>
-            </div>
-        </div>
-
-        <div class="container mt-5 mb-5">
-            <div class="text-center mt-5 mb-5">
-                <img src="static/mark-green.png" width="50px">
-                <h6 class="mt-2">Chammy's Equine Sanctuary Foundation</h6>
-                <h6 class="fw-lighter">501(c)(3) Public Charity · EIN 93-4751200</h6>
-                <h6 class="fw-lighter">Guthrie, Oklahoma</h6>
-                <ul class="nav justify-content-center">
-                    <li class="nav-item px-2"><a href="mailto:hello@chammys.org" target="_blank"
-                            class="text-body-secondary"><i class="bi-envelope"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<body>
+    <!-- ── Splash Screen ─────────────────────────── -->
+    <div class="splash" id="splash">
+        <img src="static/mark-green.png" alt="Chammy's Equine Sanctuary">
     </div>
 
+    <div class="page-content" id="pageContent">
+        <div class="container-fluid col-xl-7 col-lg-8 col-md-10 col-sm-11">
+
+            <!-- ── Hero ──────────────────────────────────── -->
+            <section class="hero">
+                <img src="static/logo-full-green.png" class="logo" alt="Chammy's Equine Sanctuary">
+                <p class="tagline">A mission-driven 501(c)(3) organization dedicated to improving the welfare of
+                    neglected
+                    equestrian animals in Guthrie, Oklahoma.</p>
+            </section>
+
+            <!-- ── Banner + Stats ─────────────────────────── -->
+            <div class="reveal">
+                <div class="banner-wrap">
+                    <img src="static/banner.jpeg" alt="Our sanctuary family">
+                </div>
+
+                <!-- ── Stats Strip ───────────────────────────── -->
+                <div class="stats-strip">
+                    <div class="row g-2 justify-content-center">
+                        <div class="col-4 col-md stat-item">
+                            <div class="stat-number">13</div>
+                            <div class="stat-label">Horses</div>
+                        </div>
+                        <div class="col-4 col-md stat-item">
+                            <div class="stat-number">9</div>
+                            <div class="stat-label">Mini Horses</div>
+                        </div>
+                        <div class="col-4 col-md stat-item">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Small Ponies</div>
+                        </div>
+                        <div class="col-6 col-md stat-item">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Large Ponies</div>
+                        </div>
+                        <div class="col-6 col-md stat-item">
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Donkeys</div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /reveal wrapper for banner + stats -->
+
+            <!-- ── Our Story ─────────────────────────────── -->
+            <section class="content-section reveal">
+                <h1 class="section-heading">Our Story</h1>
+                <p><b>Chammy's Equine Sanctuary</b> is a haven for horses, mini horses, ponies, and donkeys. Since 2015,
+                    Angela, our President and sole staff member, has dedicated herself to voluntarily caring for these
+                    animals&mdash;and countless others&mdash;all while working full-time as a public school teacher. Her
+                    work has created a refuge for neglected equines, contributed to natural disaster rescue efforts, and
+                    helped educate the community on responsible equine ownership.
+                </p>
+                <p>In 2024, <b>Chammy's Equine Sanctuary Foundation</b> was established to support Angela's unwavering
+                    commitment
+                    and ensure the long-term sustainability of her mission. A dedicated board of directors was formed to
+                    provide
+                    strategic oversight, governance, and stewardship of resources. Together, we remain focused on
+                    protecting,
+                    rescuing, and advocating for equines in need.</p>
+            </section>
+
+            <!-- ── Our Needs ─────────────────────────────── -->
+            <section class="content-section reveal">
+                <h1 class="section-heading">Our Needs</h1>
+                <p>100% of all donations to the general fund go directly to caring for our animals and furthering our
+                    mission&mdash;covering essential monthly expenses such as grain, hay, and medical care.</p>
+                <p class="mb-4">While our immediate priority is meeting daily needs, we have future goals we'd love to
+                    share:</p>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <div class="need-card">
+                            <div class="need-icon"><i class="bi bi-hammer"></i></div>
+                            <h5>Sanctuary Repairs</h5>
+                            <p>Invest in repairing and maintaining our barn, ensuring it remains a safe, functional, and
+                                comfortable home for our animals.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="need-card">
+                            <div class="need-icon"><i class="bi bi-shield-check"></i></div>
+                            <h5>Emergency Preparedness</h5>
+                            <p>Acquire a stock-type trailer for safely transporting animals during wildfires or natural
+                                disasters.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="need-card">
+                            <div class="need-icon"><i class="bi bi-arrows-fullscreen"></i></div>
+                            <h5>Expanding Our Sanctuary</h5>
+                            <p>Purchase additional land to increase pasture space, providing more grazing areas and
+                                shelter
+                                for our growing family.</p>
+                        </div>
+                    </div>
+                </div>
+                <p>Your generosity helps us care for our animals today and build a brighter future for them tomorrow.
+                </p>
+                <!-- ── Tax-Deductible Note ────────────────────── -->
+                <div class="tax-note reveal my-4 text-center">
+                    <i class="bi bi-patch-check-fill"></i>
+                    <p class="mb-0">Chammy's Equine Sanctuary Foundation is a registered 501(c)(3) public charity.
+                        <strong>Your gifts are tax-deductible</strong> to the fullest extent allowed by law.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ── Our Vision ────────────────────────────── -->
+            <section class="content-section reveal">
+                <h1 class="section-heading">Our Vision</h1>
+                <p>We envision a world where every equine—horse, pony, mini, or donkey—lives free from neglect, cruelty,
+                    and
+                    suffering. Our goal is to ensure that neglected equines receive the individualized care they need to
+                    heal
+                    physically, emotionally, and psychologically. Through compassionate rescue and rehabilitation, we
+                    help them
+                    recover and thrive in safe, nurturing environments.</p>
+                <p>Beyond rescue, our vision includes a future where responsible equine ownership is the norm. Through
+                    education
+                    and outreach, we aim to foster a culture of empathy, accountability, and proper care within the
+                    equestrian
+                    community and beyond. By equipping individuals with the knowledge and resources to prevent harm, we
+                    strive
+                    to stop neglect before it begins.</p>
+                <p>Realizing this vision requires collective effort. We are committed to working alongside fellow
+                    advocates,
+                    organizations, and volunteers to champion equine welfare. Together, we will build a more
+                    compassionate
+                    world—one where all equines are treated with dignity, kindness, and respect.</p>
+            </section>
+
+            <!-- ── Fun Fact ──────────────────────────────── -->
+            <div class="fun-fact reveal my-4">
+                <div class="row align-items-center g-3">
+                    <div class="col-12 col-sm-auto text-center">
+                        <img src="static/chammy-angela.jpg" alt="Chammy and Angela">
+                    </div>
+                    <div class="col-12 col-sm">
+                        <span class="badge-label"><i class="bi bi-lightbulb me-1"></i>Did you know?</span>
+                        <p class="mb-0">Chammy holds a special place in Angela's heart as her first horse, igniting her
+                            lifelong dedication to caring for neglected equestrian animals. Chammy's blankets were also
+                            green, just like our logo!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── CTA Card ──────────────────────────────── -->
+            <div class="cta-card reveal my-5">
+                <h2>Stay Connected</h2>
+                <p>Keep up with the latest news, heartwarming animal stories, and updates from our foundation.</p>
+                <a class="btn-cta" href="https://www.facebook.com/profile.php?id=61558511665949" target="_blank">
+                    <i class="bi bi-facebook"></i> Visit Our Facebook Page
+                </a>
+            </div>
+
+            <!-- ── Footer ────────────────────────────────── -->
+            <footer class="reveal">
+                <img src="static/mark-green.png" alt="Chammy's mark">
+                <h6>Chammy's Equine Sanctuary Foundation</h6>
+                <p class="meta">501(c)(3) Public Charity &middot; EIN 93-4751200<br>Guthrie, Oklahoma</p>
+                <div class="d-flex gap-2 justify-content-center mt-3">
+                    <a href="mailto:hello@chammys.org" class="social-link" aria-label="Email us">
+                        <i class="bi bi-envelope"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61558511665949" target="_blank" class="social-link"
+                        aria-label="Facebook">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                </div>
+            </footer>
+        </div>
+    </div><!-- /page-content -->
+
+    <!-- ── Scroll Reveal Script ──────────────────── -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const splash = document.getElementById('splash');
+            const page = document.getElementById('pageContent');
+
+            // Show splash for 1.5s, then fade it out
+            setTimeout(() => {
+                splash.classList.add('fade-out');
+
+                // After splash fades (600ms transition), reveal page content
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                    page.classList.add('show');
+
+                    // Start scroll-reveal observers after page is visible
+                    const els = document.querySelectorAll('.reveal');
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.12 });
+                    els.forEach(el => observer.observe(el));
+                }, 600);
+            }, 1500);
+        });
+    </script>
 </body>
 
 </html>
