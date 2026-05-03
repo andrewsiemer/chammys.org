@@ -4,77 +4,105 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex,nofollow,noarchive" />
-  <title>Andrew Siemer — Chammy&rsquo;s Equine Sanctuary</title>
+  <title>Andrew Siemer — Chammy&rsquo;s Signature</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap"
-        rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap">
 
   <style>
-    html, body { margin: 0; padding: 0; height: 100%; }
+    html, body { margin: 0; padding: 0; background: #ffffff; }
     body {
-      background: #f3ecda;
-      color: #2b4a44;
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 32px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-    .sig-frame { padding: 2rem; }
-    .sig { color: #2b4a44; border-collapse: collapse; }
-    .sig td { vertical-align: middle; }
-    .sig .mark { padding-right: 18px; }
-    .sig .mark img { display: block; width: 64px; height: 64px; }
-    .sig .text { border-left: 1px solid rgba(43,74,68,0.25); padding-left: 18px; }
-    .sig .name {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 1.15;
-    }
-    .sig .role {
-      font-weight: 500;
-      font-size: 11px;
-      color: #3d5e56;
+    .copy-btn {
+      font: inherit;
+      font-size: 13px;
+      padding: 8px 16px;
+      background: #2b4a44;
+      color: #f3ecda;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      margin-top: 3px;
     }
-    .sig .meta {
-      font-size: 12.5px;
-      margin-top: 6px;
-      line-height: 1.5;
+    .copy-btn:active { opacity: 0.8; }
+    .copy-status {
+      display: inline-block;
+      margin-left: 12px;
+      font-size: 12px;
+      color: #2b4a44;
+      opacity: 0;
+      transition: opacity 0.2s;
     }
-    .sig .meta .ein { color: #4a6e64; }
-    .sig .meta a {
-      color: #5a8a7a;
-      text-decoration: none;
-    }
+    .copy-status.show { opacity: 1; }
+    .controls { margin-bottom: 32px; }
   </style>
 </head>
 <body>
 
-<div class="sig-frame">
-  <table class="sig" cellpadding="0" cellspacing="0" border="0" role="presentation">
-    <tr>
-      <td class="mark">
-        <img src="/static/mark-green.png" alt="Chammy&rsquo;s Equine Sanctuary" width="64" height="64">
-      </td>
-      <td class="text">
-        <div class="name">Andrew Siemer</div>
-        <div class="role">Chairman of the Board</div>
-        <div class="meta">
-          Chammy&rsquo;s Equine Sanctuary Foundation<br>
-          <span class="ein">501(c)(3) Public Charity &middot; EIN 93-4751200</span><br>
-          <a href="https://chammys.org">chammys.org</a>
-        </div>
-      </td>
-    </tr>
-  </table>
+<div class="controls">
+  <button class="copy-btn" id="copyBtn">Copy signature</button>
+  <span class="copy-status" id="copyStatus">Copied to clipboard</span>
 </div>
+
+<table id="signature" cellpadding="0" cellspacing="0" border="0" role="presentation"
+       style="font-family: 'Inter', -apple-system, sans-serif; color: #2b4a44;">
+  <tr>
+    <td style="vertical-align: middle; padding-right: 18px;">
+      <img src="/static/mark-green.png"
+           alt="Chammy&rsquo;s Equine Sanctuary"
+           width="64" height="64"
+           style="display:block; width:64px; height:64px;">
+    </td>
+    <td style="vertical-align: middle; border-left: 1px solid rgba(43,74,68,0.25); padding-left: 18px;">
+      <div style="font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 16px; color: #2b4a44; line-height: 1.15;">Andrew Siemer</div>
+      <div style="font-family: 'Inter', -apple-system, sans-serif; font-weight: 500; font-size: 10.5px; color: #3d5e56; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 3px;">Chairman of the Board</div>
+      <div style="font-family: 'Inter', -apple-system, sans-serif; font-weight: 400; font-size: 11.5px; color: #2b4a44; margin-top: 6px; line-height: 1.5;">
+        Chammy&rsquo;s Equine Sanctuary Foundation<br>
+        <span style="color: #4a6e64;">501(c)(3) Public Charity &middot; EIN 93-4751200</span><br>
+        <a href="https://chammys.org" style="color: #5a8a7a; text-decoration: none;">chammys.org</a>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<script>
+(function () {
+  const btn = document.getElementById('copyBtn');
+  const status = document.getElementById('copyStatus');
+  const sig = document.getElementById('signature');
+
+  btn.addEventListener('click', async () => {
+    const html = sig.outerHTML;
+    const text = sig.innerText;
+    let ok = false;
+    try {
+      await navigator.clipboard.write([
+        new ClipboardItem({
+          'text/html': new Blob([html], { type: 'text/html' }),
+          'text/plain': new Blob([text], { type: 'text/plain' })
+        })
+      ]);
+      ok = true;
+    } catch (e) {
+      const range = document.createRange();
+      range.selectNodeContents(sig);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      try { ok = document.execCommand('copy'); } catch (e2) {}
+      sel.removeAllRanges();
+    }
+    status.textContent = ok ? 'Copied to clipboard' : 'Copy failed — long-press the signature to copy';
+    status.classList.add('show');
+    setTimeout(() => status.classList.remove('show'), 2000);
+  });
+})();
+</script>
 
 </body>
 </html>
