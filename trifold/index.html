@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chammy's Equine Sanctuary &middot; Trifold</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        /* ── Page setup (Letter, landscape) ─────────────── */
+        @page {
+            size: 11in 8.5in;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: #f3ecda;
+            color: #2b4a44;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            line-height: 1.45;
+            font-size: 9.5pt;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        *, *::before, *::after {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin: 0 0 .35rem;
+            line-height: 1.15;
+            color: #2b4a44;
+        }
+
+        p {
+            margin: 0 0 .55rem;
+        }
+
+        .page {
+            width: 11in;
+            height: 8.5in;
+            background: #f3ecda;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            page-break-after: always;
+            page-break-inside: avoid;
+            overflow: hidden;
+        }
+
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        .panel {
+            padding: 0.45in 0.4in;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-title {
+            font-size: 16pt;
+            margin-bottom: .55rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .panel-title::after {
+            content: '';
+            display: block;
+            width: 36px;
+            height: 2.5px;
+            background: #5a8a7a;
+            border-radius: 2px;
+            margin-top: .25rem;
+        }
+
+        .panel-title-light {
+            color: #f3ecda;
+        }
+
+        .panel-title-light::after {
+            background: #f3ecda;
+        }
+
+        /* ── COVER PANEL (front) ──────────────────────── */
+        .panel-cover {
+            background: #2b4a44;
+            color: #f3ecda;
+            text-align: center;
+            justify-content: space-between;
+            padding: 0.55in 0.4in;
+        }
+
+        .panel-cover .cover-mark {
+            width: 1.4in;
+            display: block;
+            margin: 0 auto .35rem;
+        }
+
+        .panel-cover .cover-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 22pt;
+            color: #f3ecda;
+            line-height: 1.05;
+            margin: 0;
+        }
+
+        .panel-cover .cover-sub {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            letter-spacing: .22em;
+            font-size: 9pt;
+            color: #a8c5bb;
+            text-transform: uppercase;
+            margin: .25rem 0 0;
+        }
+
+        .panel-cover .tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 11pt;
+            color: #dceee8;
+            margin-top: .55rem;
+        }
+
+        .panel-cover .qr-block {
+            background: #f3ecda;
+            color: #2b4a44;
+            border-radius: 0.45rem;
+            padding: 0.18in 0.2in;
+            margin: 0.18in auto 0;
+            max-width: 90%;
+        }
+
+        .panel-cover .qr-block img {
+            width: 1.85in;
+            height: 1.85in;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .panel-cover .qr-cta {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 13pt;
+            margin-top: .3rem;
+            color: #2b4a44;
+        }
+
+        .panel-cover .qr-sub {
+            font-size: 8.5pt;
+            color: #4a6e64;
+            margin: 0;
+        }
+
+        .panel-cover .footer-mark {
+            font-size: 8pt;
+            color: #bdd4cc;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* ── BACK PANEL ───────────────────────────────── */
+        .panel-back {
+            background: #f3ecda;
+            text-align: center;
+            justify-content: space-between;
+        }
+
+        .panel-back .mark {
+            width: 50px;
+            margin: 0 auto .25rem;
+            display: block;
+            opacity: .9;
+        }
+
+        .panel-back h4 {
+            font-size: 13pt;
+            margin-top: .25rem;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: .5rem 0 0;
+        }
+
+        .contact-list li {
+            font-size: 9pt;
+            padding: .25rem 0;
+            color: #3d5e56;
+            border-top: 1px solid rgba(43, 74, 68, .12);
+        }
+
+        .contact-list li:first-child {
+            border-top: none;
+        }
+
+        .contact-list i {
+            color: #5a8a7a;
+            margin-right: .3rem;
+        }
+
+        .tax-blurb {
+            background: rgba(43, 74, 68, .07);
+            border: 1px dashed rgba(43, 74, 68, .25);
+            border-radius: .45rem;
+            padding: .45rem .55rem;
+            font-size: 8pt;
+            color: #3d5e56;
+            margin-top: .55rem;
+            line-height: 1.4;
+        }
+
+        /* ── INSIDE FLAP (volunteer / connect) ────────── */
+        .panel-flap {
+            background: #f3ecda;
+        }
+
+        .flap-card {
+            background: #fff;
+            border: 1px solid rgba(43, 74, 68, .1);
+            border-left: 3px solid #5a8a7a;
+            border-radius: .55rem;
+            padding: .5rem .65rem;
+            margin-bottom: .55rem;
+        }
+
+        .flap-card h5 {
+            font-size: 10.5pt;
+            margin: 0 0 .2rem;
+        }
+
+        .flap-card p {
+            font-size: 8.5pt;
+            margin: 0;
+            color: #3d5e56;
+        }
+
+        .flap-card i {
+            color: #5a8a7a;
+            margin-right: .25rem;
+        }
+
+        /* ── INSIDE: STORY / NEEDS / RESIDENTS ────────── */
+        .panel-story {
+            background: #f3ecda;
+        }
+
+        .panel-story p {
+            font-size: 9pt;
+            color: #3d5e56;
+        }
+
+        .stats-mini {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: .35rem;
+            margin-top: .55rem;
+        }
+
+        .stat-pill {
+            background: #2b4a44;
+            color: #f3ecda;
+            border-radius: .45rem;
+            padding: .35rem .25rem;
+            text-align: center;
+        }
+
+        .stat-pill .num {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 14pt;
+            line-height: 1;
+            display: block;
+        }
+
+        .stat-pill .lbl {
+            font-size: 7pt;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: #a8c5bb;
+            margin-top: .12rem;
+            display: block;
+        }
+
+        .panel-needs {
+            background: #f3ecda;
+        }
+
+        .need-row {
+            display: flex;
+            gap: .5rem;
+            margin-bottom: .55rem;
+            align-items: flex-start;
+        }
+
+        .need-row .icon {
+            flex: 0 0 28px;
+            width: 28px;
+            height: 28px;
+            border-radius: .4rem;
+            background: rgba(43, 74, 68, .12);
+            color: #2b4a44;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11pt;
+        }
+
+        .need-row .body {
+            flex: 1;
+        }
+
+        .need-row h5 {
+            font-size: 10pt;
+            margin: 0 0 .1rem;
+        }
+
+        .need-row p {
+            font-size: 8.5pt;
+            margin: 0;
+            line-height: 1.35;
+            color: #3d5e56;
+        }
+
+        /* ── INSIDE: RESIDENTS PANEL ─────────────────── */
+        .panel-residents {
+            background: #f3ecda;
+        }
+
+        .resident-row {
+            display: flex;
+            gap: .45rem;
+            padding: .42rem 0;
+            border-top: 1px solid rgba(43, 74, 68, .12);
+        }
+
+        .resident-row:first-of-type {
+            border-top: none;
+            padding-top: .2rem;
+        }
+
+        .resident-row img {
+            flex: 0 0 0.85in;
+            width: 0.85in;
+            height: 0.85in;
+            object-fit: cover;
+            border-radius: .4rem;
+        }
+
+        .resident-row .body h5 {
+            font-size: 9.5pt;
+            margin: 0 0 .12rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: .3rem;
+        }
+
+        .resident-row .body h5 .tag {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 7pt;
+            color: #5a8a7a;
+            background: rgba(90, 138, 122, .14);
+            padding: .08rem .35rem;
+            border-radius: .3rem;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .resident-row .body p {
+            font-size: 8pt;
+            line-height: 1.35;
+            margin: 0;
+            color: #3d5e56;
+        }
+
+        /* ── Donate CTA on inside ─────────────────────── */
+        .inside-cta {
+            margin-top: auto;
+            background: #2b4a44;
+            color: #f3ecda;
+            border-radius: .5rem;
+            padding: .5rem .65rem;
+            text-align: center;
+            font-size: 8.5pt;
+        }
+
+        .inside-cta strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 10pt;
+            display: block;
+            color: #f3ecda;
+        }
+
+        /* ── On-screen scaling for preview ───────────── */
+        @media screen {
+            body {
+                background: #555;
+                padding: 24px 0;
+            }
+
+            .page {
+                margin: 0 auto 28px;
+                box-shadow: 0 12px 40px rgba(0, 0, 0, .35);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ────────── OUTSIDE (back | flap | cover) ────────── -->
+    <div class="page">
+
+        <!-- BACK PANEL (left) -->
+        <div class="panel panel-back">
+            <div>
+                <img class="mark" src="../static/mark-green.png" alt="">
+                <h4>Chammy's Equine Sanctuary Foundation</h4>
+                <p style="font-size:8.5pt;color:#6b8e85;margin:.15rem 0 0;">
+                    501(c)(3) Public Charity<br>
+                    EIN 93-4751200 &middot; Guthrie, Oklahoma
+                </p>
+
+                <ul class="contact-list">
+                    <li><i class="bi bi-globe2"></i>chammys.org</li>
+                    <li><i class="bi bi-envelope-fill"></i>hello@chammys.org</li>
+                    <li><i class="bi bi-facebook"></i>facebook.com/ChammysEquineSanctuary</li>
+                    <li><i class="bi bi-geo-alt-fill"></i>Guthrie, OK</li>
+                </ul>
+            </div>
+
+            <div class="tax-blurb">
+                <strong>Tax-deductible.</strong> Chammy's Equine Sanctuary Foundation is a registered 501(c)(3) public
+                charity. Your gifts are tax-deductible to the fullest extent allowed by law.
+            </div>
+        </div>
+
+        <!-- INSIDE FLAP (middle) -->
+        <div class="panel panel-flap">
+            <h2 class="panel-title">Get Involved</h2>
+            <p style="font-size:9pt;">There is more than one way to help. Pick whichever speaks to you&mdash;every bit
+                makes a difference.</p>
+
+            <div class="flap-card">
+                <h5><i class="bi bi-heart-fill"></i>Give</h5>
+                <p>Every dollar goes directly to grain, hay, vet care, and the safe shelter our animals depend on.</p>
+            </div>
+
+            <div class="flap-card">
+                <h5><i class="bi bi-people-fill"></i>Volunteer</h5>
+                <p>In the Guthrie area and love hard work and big animals? Email
+                    <strong>volunteer@chammys.org</strong>.
+                </p>
+            </div>
+
+            <div class="flap-card">
+                <h5><i class="bi bi-megaphone-fill"></i>Share Our Story</h5>
+                <p>Follow us on Facebook and share our posts. Awareness is its own kind of rescue.</p>
+            </div>
+
+            <div class="flap-card">
+                <h5><i class="bi bi-box-seam-fill"></i>Sponsor a Need</h5>
+                <p>Barn repairs, an emergency trailer, more pasture&mdash;reach out to underwrite a specific project.
+                </p>
+            </div>
+
+            <div style="margin-top:auto;text-align:center;font-size:8pt;color:#6b8e85;letter-spacing:.06em;text-transform:uppercase;font-weight:600;">
+                hello@chammys.org
+            </div>
+        </div>
+
+        <!-- COVER (right) -->
+        <div class="panel panel-cover">
+            <div>
+                <img class="cover-mark" src="../static/mark-beige.png" alt="">
+                <h1 class="cover-name">Chammy's</h1>
+                <p class="cover-sub">Equine Sanctuary</p>
+                <p class="tagline">A safe landing for neglected equestrian animals.</p>
+            </div>
+
+            <div class="qr-block">
+                <img src="../static/give-qr.png" alt="QR code linking to chammys.org/give">
+                <div class="qr-cta">Scan to Give</div>
+                <p class="qr-sub">chammys.org/give</p>
+            </div>
+
+            <div class="footer-mark">
+                Guthrie, Oklahoma &middot; Since 2015
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ────────── INSIDE (story | residents | needs) ────────── -->
+    <div class="page">
+
+        <!-- OUR STORY -->
+        <div class="panel panel-story">
+            <h2 class="panel-title">Our Story</h2>
+            <p><strong>Chammy's Equine Sanctuary</strong> is a haven for horses, mini horses, ponies, and donkeys.
+                Since 2015, Angela&mdash;our President and sole staff member&mdash;has voluntarily cared for these
+                animals while working full-time as a public school teacher.</p>
+            <p>In 2024, the <strong>Chammy's Equine Sanctuary Foundation</strong> was established to support Angela's
+                mission and ensure its long-term sustainability, with a dedicated board providing stewardship and
+                governance.</p>
+
+            <h2 class="panel-title" style="margin-top:.5rem;">Our Vision</h2>
+            <p>A world where every equine&mdash;horse, pony, mini, or donkey&mdash;lives free from neglect and
+                suffering. We rescue, rehabilitate, and advocate&mdash;and we work to stop neglect before it starts
+                through education and community outreach.</p>
+
+            <h2 class="panel-title" style="margin-top:.5rem;">Our Family</h2>
+            <div class="stats-mini">
+                <div class="stat-pill"><span class="num">13</span><span class="lbl">Horses</span></div>
+                <div class="stat-pill"><span class="num">9</span><span class="lbl">Minis</span></div>
+                <div class="stat-pill"><span class="num">5</span><span class="lbl">Small Ponies</span></div>
+                <div class="stat-pill"><span class="num">3</span><span class="lbl">Large Ponies</span></div>
+                <div class="stat-pill"><span class="num">6</span><span class="lbl">Donkeys</span></div>
+                <div class="stat-pill"><span class="num">10+</span><span class="lbl">Years</span></div>
+            </div>
+
+            <div class="inside-cta" style="margin-top:.6rem;">
+                <strong>100% to the animals.</strong>
+                Every dollar to the general fund goes directly to their care.
+            </div>
+        </div>
+
+        <!-- RESIDENTS -->
+        <div class="panel panel-residents">
+            <h2 class="panel-title">Meet a Few Residents</h2>
+
+            <div class="resident-row">
+                <img src="../static/residents/cowboy-1.jpg" alt="Cowboy">
+                <div class="body">
+                    <h5>Cowboy <span class="tag">Rescued</span></h5>
+                    <p>A friend's plea brought Cowboy to us&mdash;underweight and struggling to breathe. With Dr. B's
+                        breathing program, he's now thriving two years on.</p>
+                </div>
+            </div>
+
+            <div class="resident-row">
+                <img src="../static/residents/flower-1.jpg" alt="Flower">
+                <div class="body">
+                    <h5>Flower <span class="tag">In Memory</span></h5>
+                    <p>Saved from a Kansas kill pen by strangers who couldn't walk away. She spent six gentle years in
+                        her pink fly boots before we said goodbye in 2022.</p>
+                </div>
+            </div>
+
+            <div class="resident-row">
+                <img src="../static/residents/charlie-1.jpg" alt="Charlie">
+                <div class="body">
+                    <h5>Charlie <span class="tag">Thriving</span></h5>
+                    <p>Two years old, beat up, and scared in an Oklahoma feedlot. Today, a beloved 12-year-old
+                        hunter/jumper sailing over fences with joy.</p>
+                </div>
+            </div>
+
+            <div class="resident-row">
+                <img src="../static/residents/rio-1.jpg" alt="Rio">
+                <div class="body">
+                    <h5>Rio <span class="tag">Favorite</span></h5>
+                    <p>A mini with a crooked leg and a shattered hind leg from a kick&mdash;put back together by Dr. B
+                        and now the loudest personality in the barn.</p>
+                </div>
+            </div>
+
+            <div class="resident-row">
+                <img src="../static/residents/donkeys-1.jpg" alt="Our donkeys">
+                <div class="body">
+                    <h5>The Donkeys <span class="tag">10 Years</span></h5>
+                    <p>Slaughter-bound a decade ago. Today, kings of the pasture&mdash;peaceful, well-fed, and
+                        absolutely in charge.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEEDS -->
+        <div class="panel panel-needs">
+            <h2 class="panel-title">Our Needs</h2>
+            <p style="font-size:9pt;">Your generosity covers our daily essentials&mdash;and helps us reach for what
+                comes next.</p>
+
+            <div class="need-row">
+                <div class="icon"><i class="bi bi-droplet-half"></i></div>
+                <div class="body">
+                    <h5>Daily Care</h5>
+                    <p>Grain, hay, hooves, dental, and veterinary care for every resident, every day.</p>
+                </div>
+            </div>
+
+            <div class="need-row">
+                <div class="icon"><i class="bi bi-hammer"></i></div>
+                <div class="body">
+                    <h5>Sanctuary Repairs</h5>
+                    <p>Maintaining the barn so it stays a safe, warm, working home for our animals.</p>
+                </div>
+            </div>
+
+            <div class="need-row">
+                <div class="icon"><i class="bi bi-shield-check"></i></div>
+                <div class="body">
+                    <h5>Emergency Preparedness</h5>
+                    <p>A stock-type trailer so we can move animals quickly in wildfires or natural disasters.</p>
+                </div>
+            </div>
+
+            <div class="need-row">
+                <div class="icon"><i class="bi bi-arrows-fullscreen"></i></div>
+                <div class="body">
+                    <h5>More Land</h5>
+                    <p>Additional pasture for our growing family&mdash;more grazing, more shelter, more room to heal.
+                    </p>
+                </div>
+            </div>
+
+            <div class="inside-cta">
+                <strong>Scan the cover &middot; Give online</strong>
+                chammys.org/give
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -54,12 +54,10 @@
             color: #2b4a44;
             font-family: 'Inter', sans-serif;
             font-weight: 400;
-            line-height: 1.7;
+            line-height: 1.6;
+            margin: 0;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            overflow-x: hidden;
         }
 
         h1,
@@ -69,36 +67,144 @@
         h5 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
+            margin: 0 0 .5rem;
         }
 
+        .container-narrow {
+            width: 100%;
+            max-width: 460px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        /* ── Hero ──────────────────────────────────────── */
         .hero {
             text-align: center;
-            padding: 3rem 1rem 1rem;
+            padding: 2.5rem 0 1rem;
         }
 
         .hero img.logo {
-            width: 220px;
-            margin-bottom: 1.5rem;
+            width: 180px;
+            max-width: 60%;
+            margin-bottom: 1.9rem;
         }
 
-        .hero .tagline {
-            max-width: 540px;
+        .hero h1 {
+            font-size: 1.85rem;
+            line-height: 1.15;
+            margin-bottom: .5rem;
+        }
+
+        .hero p.intro {
             margin: 0 auto;
-            font-size: 1.15rem;
+            font-size: 1rem;
             font-weight: 300;
             color: #4a6e64;
+            max-width: 360px;
+        }
+
+        /* ── Residents Strip ──────────────────────────── */
+        .residents-strip {
+            margin: .6rem auto 0;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        .residents-strip .label {
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: #6b8e85;
+            margin-bottom: .55rem;
+        }
+
+        .residents-strip .avatars {
+            display: flex;
+            justify-content: center;
+            padding: 0 .5rem;
+        }
+
+        .residents-strip .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2.5px solid #f3ecda;
+            background: #e9e0c7;
+            margin-left: -10px;
+            box-shadow: 0 2px 6px rgba(43, 74, 68, .12);
+            transition: transform .25s ease;
+        }
+
+        .residents-strip .avatar:first-child {
+            margin-left: 0;
+        }
+
+        .residents-strip .avatar:hover {
+            transform: translateY(-3px);
+        }
+
+        .residents-strip .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .residents-strip .names {
+            font-size: .82rem;
+            color: #4a6e64;
+            margin-top: .65rem;
+            font-style: italic;
+        }
+
+        /* ── Widget ───────────────────────────────────── */
+        .widget-wrap {
+            margin: 1.8rem auto 0;
+            max-width: 420px;
+        }
+
+        /* ── Tax Note ─────────────────────────────────── */
+        .tax-note {
+            background: rgba(43, 74, 68, .06);
+            border: 1px dashed rgba(43, 74, 68, .2);
+            border-radius: .9rem;
+            padding: .95rem 1.1rem;
+            text-align: center;
+            max-width: 420px;
+            margin: 1.4rem auto 0;
+        }
+
+        .tax-note i {
+            font-size: 1.2rem;
+            color: #5a8a7a;
+            display: block;
+            margin-bottom: .35rem;
+        }
+
+        .tax-note p {
+            font-size: .85rem;
+            color: #3d5e56;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ── Back Link ────────────────────────────────── */
+        .back-row {
+            text-align: center;
+            margin: 1.3rem 0 .5rem;
         }
 
         .back-link {
             display: inline-flex;
             align-items: center;
-            gap: .4rem;
+            gap: .35rem;
             color: #5a8a7a;
             text-decoration: none;
-            font-size: .95rem;
+            font-size: .9rem;
             font-weight: 500;
-            margin-top: .5rem;
-            padding: .35rem 1rem;
+            padding: .35rem .85rem;
             border-radius: .5rem;
             transition: background .25s ease, color .25s ease;
         }
@@ -108,47 +214,41 @@
             color: #2b4a44;
         }
 
-        .widget-wrap {
-            display: block;
-            max-width: 420px;
-            height: auto;
-            margin: 0 auto;
-            padding: 1.5rem 0 0;
-        }
-
+        /* ── Footer ───────────────────────────────────── */
         footer {
-            padding: 3rem 0 2rem;
+            padding: 1.5rem 0 1.75rem;
             text-align: center;
         }
 
         footer img {
-            width: 44px;
+            width: 36px;
             opacity: .85;
-            margin-bottom: .75rem;
+            margin-bottom: .5rem;
         }
 
         footer h6 {
             font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: .25rem;
+            font-size: .92rem;
+            margin: 0;
         }
 
         footer .meta {
-            font-size: .85rem;
+            font-size: .78rem;
             color: #6b8e85;
             font-weight: 400;
+            margin: .2rem 0 0;
         }
 
         footer .social-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background: rgba(43, 74, 68, .07);
             color: #2b4a44;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: background .25s ease, transform .25s ease;
             text-decoration: none;
         }
@@ -159,33 +259,11 @@
             transform: translateY(-2px);
         }
 
-        /* ── Tax-Deductible Note ──────────────────────── */
-        .tax-note {
-            background: rgba(43, 74, 68, .06);
-            border: 1px dashed rgba(43, 74, 68, .2);
-            border-radius: 1rem;
-            padding: 1.25rem 1.75rem;
-            max-width: 420px;
-            margin: 0 auto;
-        }
-
-        .tax-note i {
-            font-size: 1.4rem;
-            color: #5a8a7a;
-            display: block;
-            margin-bottom: .5rem;
-        }
-
-        .tax-note p {
-            font-size: .95rem;
-            color: #3d5e56;
-        }
-
-        /* ── Scroll Reveal ─────────────────────────────── */
+        /* ── Reveal ───────────────────────────────────── */
         .reveal {
             opacity: 0;
-            transform: translateY(28px);
-            transition: opacity .7s ease, transform .7s ease;
+            transform: translateY(18px);
+            transition: opacity .6s ease, transform .6s ease;
         }
 
         .reveal.visible {
@@ -193,7 +271,7 @@
             transform: translateY(0);
         }
 
-        /* ── Splash Screen ─────────────────────────────── */
+        /* ── Splash ───────────────────────────────────── */
         .splash {
             position: fixed;
             inset: 0;
@@ -211,7 +289,7 @@
         }
 
         .splash img {
-            width: 90px;
+            width: 80px;
             opacity: 0;
             transition: opacity .4s ease;
             animation: splashPulse 1.6s ease-in-out infinite;
@@ -235,7 +313,6 @@
             }
         }
 
-        /* hide page content until splash clears */
         .page-content {
             opacity: 0;
             transition: opacity .5s ease;
@@ -245,69 +322,95 @@
             opacity: 1;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* ── Mobile ───────────────────────────────────── */
         @media (max-width: 576px) {
+            .container-narrow {
+                padding: 0 1rem;
+            }
+
             .hero {
-                padding: 2rem 1rem .5rem;
+                padding: 1.75rem 0 .25rem;
             }
 
             .hero img.logo {
-                width: 170px;
+                width: 150px;
+            }
+
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+
+            .hero p.intro {
+                font-size: .95rem;
+            }
+
+            .residents-strip .avatar {
+                width: 44px;
+                height: 44px;
+                margin-left: -8px;
+            }
+
+            .residents-strip .names {
+                font-size: .78rem;
+            }
+
+            .widget-wrap {
+                margin-top: 1.4rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- ── Splash Screen ─────────────────────────── -->
     <div class="splash" id="splash">
         <img src="../static/mark-green.png" alt="Chammy's Equine Sanctuary">
     </div>
 
     <div class="page-content" id="pageContent">
-        <main>
-            <section class="hero">
+
+        <section class="hero container-narrow">
+            <a href="/" aria-label="Chammy's Equine Sanctuary home">
                 <img src="../static/logo-full-green.png" class="logo" alt="Chammy's Equine Sanctuary">
-                <p class="tagline">A mission-driven 501(c)(3) organization dedicated to improving the welfare of
-                    neglected
-                    equestrian animals in Guthrie, Oklahoma.</p>
-            </section>
+            </a>
+            <h1>Give them a safe landing.</h1>
+            <p class="intro">100% of your gift goes directly to grain, hay, vet care, and shelter for the animals in
+                our sanctuary.</p>
+        </section>
 
-            <div class="widget-wrap reveal">
-                <givebutter-widget id="pXGJzg"></givebutter-widget>
+        <div class="residents-strip reveal container-narrow">
+            <div class="label">Your gift cares for equines like &hellip;</div>
+            <div class="avatars" aria-hidden="true">
+                <div class="avatar"><img src="../static/residents/cowboy-2.jpg" alt=""></div>
+                <div class="avatar"><img src="../static/residents/charlie-1.jpg" alt=""></div>
+                <div class="avatar"><img src="../static/residents/rio-1.jpg" alt=""></div>
+                <div class="avatar"><img src="../static/residents/donkeys-2.jpg" alt=""></div>
+                <div class="avatar"><img src="../static/residents/flower-1.jpg" alt=""></div>
             </div>
+            <div class="names">Cowboy, Charlie, Rio, our donkeys &mdash; and the next one we say yes to.</div>
+        </div>
 
-            <div class="tax-note reveal my-4 text-center">
-                <i class="bi bi-patch-check-fill"></i>
-                <p class="mb-0">Chammy's Equine Sanctuary Foundation is a registered 501(c)(3) public charity (EIN
-                    93-4751200).
-                    <strong>Your gifts are tax-deductible</strong> to the fullest extent allowed by law.
-                </p>
-            </div>
+        <div class="widget-wrap reveal container-narrow">
+            <givebutter-widget id="pXGJzg"></givebutter-widget>
+        </div>
 
-            <div class="text-center reveal">
-                <a href="/" class="back-link">
-                    <i class="bi bi-arrow-left"></i> Back to Home
-                </a>
-            </div>
-        </main>
+        <div class="tax-note reveal container-narrow">
+            <i class="bi bi-patch-check-fill"></i>
+            <p>Chammy's Equine Sanctuary Foundation is a registered 501(c)(3) public charity (EIN 93-4751200).
+                <strong>Your gifts are tax-deductible</strong> to the fullest extent allowed by law.
+            </p>
+        </div>
+
+        <div class="back-row reveal">
+            <a href="/" class="back-link">
+                <i class="bi bi-arrow-left"></i> Back to home
+            </a>
+        </div>
 
         <footer class="reveal">
             <img src="../static/mark-green.png" alt="Chammy's mark">
             <h6>Chammy's Equine Sanctuary Foundation</h6>
-            <p class="meta">501(c)(3) Public Charity &middot; EIN 93-4751200<br>Guthrie, Oklahoma</p>
-            <div class="d-flex gap-2 justify-content-center mt-3">
+            <p class="meta">501(c)(3) Public Charity &middot; EIN 93-4751200 &middot; Guthrie, OK</p>
+            <div class="d-flex gap-2 justify-content-center mt-2">
                 <a href="mailto:hello@chammys.org" class="social-link" aria-label="Email us">
                     <i class="bi bi-envelope"></i>
                 </a>
@@ -317,7 +420,8 @@
                 </a>
             </div>
         </footer>
-    </div><!-- /page-content -->
+
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -330,41 +434,29 @@
             var splashImg = splash.querySelector('img');
             var page = document.getElementById('pageContent');
 
-            // Fade in the splash logo once it's loaded
             var splashReady = new Promise(function (resolve) {
                 if (splashImg.complete && splashImg.naturalWidth > 0) {
                     splashImg.classList.add('loaded');
                     resolve();
                     return;
                 }
-                splashImg.onload = function () {
-                    splashImg.classList.add('loaded');
-                    resolve();
-                };
-                splashImg.onerror = function () {
-                    splashImg.classList.add('loaded');
-                    resolve();
-                };
+                splashImg.onload = function () { splashImg.classList.add('loaded'); resolve(); };
+                splashImg.onerror = function () { splashImg.classList.add('loaded'); resolve(); };
             });
 
-            // Min splash starts after the logo has faded in
             var minSplash = splashReady.then(function () {
-                return new Promise(function (resolve) { setTimeout(resolve, 1500); });
+                return new Promise(function (resolve) { setTimeout(resolve, 1200); });
             });
 
             minSplash.then(function () {
                 splash.classList.add('fade-out');
-
                 setTimeout(function () {
                     splash.style.display = 'none';
                     page.classList.add('show');
 
-                    // Stagger reveal elements after page appears
                     var els = document.querySelectorAll('.reveal');
                     els.forEach(function (el, i) {
-                        setTimeout(function () {
-                            el.classList.add('visible');
-                        }, 200 * (i + 1));
+                        setTimeout(function () { el.classList.add('visible'); }, 150 * (i + 1));
                     });
                 }, 600);
             });

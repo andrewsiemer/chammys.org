@@ -237,6 +237,130 @@
             margin-bottom: 0;
         }
 
+        /* ── Residents Section ────────────────────────── */
+        .resident-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .4rem;
+            margin: 1.25rem 0 1.5rem;
+            padding: 0;
+            list-style: none;
+            border: none;
+        }
+
+        .resident-tabs .nav-link {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2b4a44;
+            background: transparent;
+            border: 1.5px solid rgba(43, 74, 68, .18);
+            border-radius: 999px;
+            padding: .45rem 1.15rem;
+            transition: background .25s ease, color .25s ease, border-color .25s ease;
+        }
+
+        .resident-tabs .nav-link:hover {
+            background: rgba(43, 74, 68, .08);
+            border-color: rgba(43, 74, 68, .3);
+        }
+
+        .resident-tabs .nav-link.active {
+            background: #2b4a44;
+            color: #f3ecda;
+            border-color: #2b4a44;
+        }
+
+        .resident-card {
+            background: #fff;
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(43, 74, 68, .08);
+            box-shadow: 0 4px 18px rgba(43, 74, 68, .06);
+        }
+
+        .resident-photo {
+            border-radius: 1rem;
+            overflow: hidden;
+            background: #e9e0c7;
+            aspect-ratio: 4 / 3;
+        }
+
+        .resident-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .resident-thumbs {
+            display: flex;
+            gap: .5rem;
+            margin-top: .65rem;
+            flex-wrap: wrap;
+        }
+
+        .resident-thumbs button {
+            padding: 0;
+            border: 2px solid transparent;
+            border-radius: .55rem;
+            overflow: hidden;
+            background: #e9e0c7;
+            width: 64px;
+            height: 48px;
+            cursor: pointer;
+            transition: border-color .2s ease, transform .2s ease;
+        }
+
+        .resident-thumbs button:hover {
+            transform: translateY(-2px);
+        }
+
+        .resident-thumbs button.active {
+            border-color: #5a8a7a;
+        }
+
+        .resident-thumbs img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .resident-name {
+            font-size: 1.65rem;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .resident-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            background: rgba(90, 138, 122, .12);
+            color: #2b4a44;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            padding: .3rem .7rem;
+            border-radius: .4rem;
+            margin: .6rem 0 .9rem;
+        }
+
+        .resident-meta.memorial {
+            background: rgba(43, 74, 68, .08);
+            color: #4a6e64;
+        }
+
+        .resident-story p {
+            margin-bottom: .85rem;
+        }
+
+        .resident-story p:last-child {
+            margin-bottom: 0;
+        }
+
         /* ── Fun Fact Callout ─────────────────────────── */
         .fun-fact {
             background: #fff;
@@ -633,7 +757,7 @@
                     rescuing, and advocating for equines in need.</p>
 
                 <!-- ── Fun Fact ──────────────────────────────── -->
-                <div class="fun-fact reveal my-4">
+                <div class="fun-fact reveal mt-4">
                     <div class="row align-items-center g-3">
                         <div class="col-12 col-sm-auto text-center">
                             <img src="static/chammy-angela.jpg" alt="Chammy and Angela">
@@ -647,6 +771,216 @@
                                 green, just like our logo!</p>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- ── Meet Our Residents ────────────────────── -->
+            <section class="content-section reveal">
+                <h1 class="section-heading">Meet a Few Residents</h1>
+                <p>Every animal at Chammy's has a story&mdash;and most of them begin with someone who refused to look
+                    the other way. Here are a just a few of the lives you help us protect.</p>
+
+                <ul class="nav resident-tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="tab-cowboy" data-bs-toggle="tab"
+                            data-bs-target="#pane-cowboy" type="button" role="tab" aria-controls="pane-cowboy"
+                            aria-selected="true">Cowboy</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab-flower" data-bs-toggle="tab" data-bs-target="#pane-flower"
+                            type="button" role="tab" aria-controls="pane-flower" aria-selected="false">Flower</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab-charlie" data-bs-toggle="tab" data-bs-target="#pane-charlie"
+                            type="button" role="tab" aria-controls="pane-charlie" aria-selected="false">Charlie</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab-rio" data-bs-toggle="tab" data-bs-target="#pane-rio"
+                            type="button" role="tab" aria-controls="pane-rio" aria-selected="false">Rio</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab-donkeys" data-bs-toggle="tab" data-bs-target="#pane-donkeys"
+                            type="button" role="tab" aria-controls="pane-donkeys" aria-selected="false">The
+                            Donkeys</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+
+                    <!-- Cowboy -->
+                    <div class="tab-pane fade show active" id="pane-cowboy" role="tabpanel"
+                        aria-labelledby="tab-cowboy">
+                        <div class="resident-card">
+                            <div class="row g-4 align-items-center">
+                                <div class="col-md-6">
+                                    <div class="resident-photo">
+                                        <img src="static/residents/cowboy-1.jpg" alt="Cowboy" data-gallery="cowboy">
+                                    </div>
+                                    <div class="resident-thumbs" data-gallery-thumbs="cowboy">
+                                        <button class="active" data-src="static/residents/cowboy-1.jpg"
+                                            aria-label="Cowboy photo 1"><img src="static/residents/cowboy-1.jpg"
+                                                alt=""></button>
+                                        <button data-src="static/residents/cowboy-2.jpg"
+                                            aria-label="Cowboy photo 2"><img src="static/residents/cowboy-2.jpg"
+                                                alt=""></button>
+                                        <button data-src="static/residents/cowboy-3.jpg"
+                                            aria-label="Cowboy photo 3"><img src="static/residents/cowboy-3.jpg"
+                                                alt=""></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3 class="resident-name">Cowboy</h3>
+                                    <span class="resident-meta"><i class="bi bi-heart-fill"></i> Rescued &middot; 2
+                                        years with us</span>
+                                    <div class="resident-story">
+                                        <p>Cowboy came to us as a desperate plea from a friend. She had sold him years
+                                            earlier and, to her heartbreak, discovered he had ended up in a situation
+                                            she couldn't fix from afar&mdash;underfed, ribs sharp under his coat, and
+                                            fighting for every breath.</p>
+                                        <p>Under Dr. B at Oakridge, Cowboy began a careful breathing program. Slowly,
+                                            day by day, his lungs cleared and his strength returned. Two years on, he
+                                            is calm, healthy, and closely watched by the team that gave him his second
+                                            chance.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flower -->
+                    <div class="tab-pane fade" id="pane-flower" role="tabpanel" aria-labelledby="tab-flower">
+                        <div class="resident-card">
+                            <div class="row g-4 align-items-center">
+                                <div class="col-md-6">
+                                    <div class="resident-photo">
+                                        <img src="static/residents/flower-1.jpg" alt="Flower">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3 class="resident-name">Flower</h3>
+                                    <span class="resident-meta memorial"><i class="bi bi-flower2"></i> In Loving
+                                        Memory &middot; 6 years with us &middot; Jan 2022</span>
+                                    <div class="resident-story">
+                                        <p>Flower was bound for slaughter in a Kansas kill pen when a kind-hearted
+                                            couple saw her, couldn't bear to leave her, and bought her freedom. They
+                                            asked us for a safe landing&mdash;and we gave her one.</p>
+                                        <p>An old knee injury meant Flower would never be a riding horse again. She
+                                            didn't need to be. For six years she grazed our pastures in her pink fly
+                                            boots, surrounded by friends and quiet days. When cancer arrived, we let
+                                            her live as long as she was comfortable, and laid her gently to rest in
+                                            January 2022. She is missed every day.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charlie -->
+                    <div class="tab-pane fade" id="pane-charlie" role="tabpanel" aria-labelledby="tab-charlie">
+                        <div class="resident-card">
+                            <div class="row g-4 align-items-center">
+                                <div class="col-md-6">
+                                    <div class="resident-photo">
+                                        <img src="static/residents/charlie-1.jpg" alt="Charlie" data-gallery="charlie">
+                                    </div>
+                                    <div class="resident-thumbs" data-gallery-thumbs="charlie">
+                                        <button class="active" data-src="static/residents/charlie-1.jpg"
+                                            aria-label="Charlie photo 1"><img src="static/residents/charlie-1.jpg"
+                                                alt=""></button>
+                                        <button data-src="static/residents/charlie-2.jpg"
+                                            aria-label="Charlie photo 2"><img src="static/residents/charlie-2.jpg"
+                                                alt=""></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3 class="resident-name">Charlie</h3>
+                                    <span class="resident-meta"><i class="bi bi-trophy-fill"></i> Rescued &middot; Bay
+                                        Thoroughbred &middot; Age 12</span>
+                                    <div class="resident-story">
+                                        <p>Charlie was only two years old when we found him in a feedlot in Perkins,
+                                            Oklahoma&mdash;bruised, frightened, and a heartbeat away from a truck ride
+                                            he wouldn't have come home from.</p>
+                                        <p>Ten years later, he is a stunning bay Thoroughbred and a beloved
+                                            hunter/jumper, sailing over fences with the joy of a horse who once thought
+                                            his story was over. Charlie is why we do this.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rio -->
+                    <div class="tab-pane fade" id="pane-rio" role="tabpanel" aria-labelledby="tab-rio">
+                        <div class="resident-card">
+                            <div class="row g-4 align-items-center">
+                                <div class="col-md-6">
+                                    <div class="resident-photo">
+                                        <img src="static/residents/rio-1.jpg" alt="Rio" data-gallery="rio">
+                                    </div>
+                                    <div class="resident-thumbs" data-gallery-thumbs="rio">
+                                        <button class="active" data-src="static/residents/rio-1.jpg"
+                                            aria-label="Rio photo 1"><img src="static/residents/rio-1.jpg"
+                                                alt=""></button>
+                                        <button data-src="static/residents/rio-2.jpg" aria-label="Rio photo 2"><img
+                                                src="static/residents/rio-2.jpg" alt=""></button>
+                                        <button data-src="static/residents/rio-3.jpg" aria-label="Rio photo 3"><img
+                                                src="static/residents/rio-3.jpg" alt=""></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3 class="resident-name">Rio</h3>
+                                    <span class="resident-meta"><i class="bi bi-star-fill"></i> Rescued &middot; Mini
+                                        &middot; Sanctuary Favorite</span>
+                                    <div class="resident-story">
+                                        <p>Rio's start was rough. Saved from a feedlot, born with a crooked front leg,
+                                            he was never going to be more than a gentle pasture companion. Then a
+                                            bigger horse kicked him and shattered his hind leg, and we feared the
+                                            worst.</p>
+                                        <p>Dr. B at Oakridge worked a small miracle, piecing him back together. Rio
+                                            came home with a limp and a personality the size of a draft horse. He
+                                            greets every visitor like he owns the place&mdash;and around here, we let
+                                            him think he does.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Donkeys -->
+                    <div class="tab-pane fade" id="pane-donkeys" role="tabpanel" aria-labelledby="tab-donkeys">
+                        <div class="resident-card">
+                            <div class="row g-4 align-items-center">
+                                <div class="col-md-6">
+                                    <div class="resident-photo">
+                                        <img src="static/residents/donkeys-1.jpg" alt="Our donkeys"
+                                            data-gallery="donkeys">
+                                    </div>
+                                    <div class="resident-thumbs" data-gallery-thumbs="donkeys">
+                                        <button class="active" data-src="static/residents/donkeys-1.jpg"
+                                            aria-label="Donkeys photo 1"><img src="static/residents/donkeys-1.jpg"
+                                                alt=""></button>
+                                        <button data-src="static/residents/donkeys-2.jpg"
+                                            aria-label="Donkeys photo 2"><img src="static/residents/donkeys-2.jpg"
+                                                alt=""></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3 class="resident-name">The Donkeys</h3>
+                                    <span class="resident-meta"><i class="bi bi-sun-fill"></i> Rescued &middot; 10
+                                        years of pasture life</span>
+                                    <div class="resident-story">
+                                        <p>Ten years ago, our donkeys were slaughter-bound. Today they are the kings
+                                            of the pasture&mdash;long ears swiveling at every sound, lazy afternoons
+                                            in the shade, and the slow, peaceful days they were always meant to have.
+                                        </p>
+                                        <p>They are quiet proof that one decision to step in can change a whole life.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
@@ -794,7 +1128,7 @@
 
             // Preload the banner image during the splash screen
             var bannerImg = new Image();
-            bannerImg.src = 'static/banner.jpeg';
+            bannerImg.src = 'static/banner.webp';
 
             // Min splash starts AFTER the logo has faded in
             var minSplash = splashReady.then(function () {
@@ -827,6 +1161,24 @@
                     }, { threshold: 0.12 });
                     els.forEach(function (el) { observer.observe(el); });
                 }, 600);
+            });
+
+            // ── Resident gallery thumbs ───────────────
+            document.querySelectorAll('[data-gallery-thumbs]').forEach(function (group) {
+                var galleryName = group.getAttribute('data-gallery-thumbs');
+                var mainImg = document.querySelector('[data-gallery="' + galleryName + '"]');
+                if (!mainImg) return;
+                group.querySelectorAll('button').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        var src = btn.getAttribute('data-src');
+                        if (!src) return;
+                        mainImg.src = src;
+                        group.querySelectorAll('button').forEach(function (b) {
+                            b.classList.remove('active');
+                        });
+                        btn.classList.add('active');
+                    });
+                });
             });
         });
     </script>
